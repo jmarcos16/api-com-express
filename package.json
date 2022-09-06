@@ -1,0 +1,16 @@
+{  
+  "name": "api-com-node-express",
+  "version": "1.0.0",
+  "description": "Testando api com node.js e express",
+  "main": "index.js",
+  "author": "Zé Marcos",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19",
+    "prisma": "^4.3.1"
+  }
+}
