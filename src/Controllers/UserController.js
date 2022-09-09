@@ -73,8 +73,46 @@ class UserController {
       },
     });
 
-    return res.status(201).send({ success: "User registered successfully" });
+    return res.status(201).send({ success: "User registered successfully", user });
   }
+
+
+  async update(req, res) {
+    const id = req.params.id;
+    const { name, email, password, type } = req.body;
+
+    // Verifica se usuário existe
+
+    const userExist = await prisma.user.findUnique({ where: { id: id } });
+
+    if (!userExist) {
+      return res.status(404).send({ error: "Usuário não encontrado" });
+    }
+
+    try {
+      const salt = await bcrypt.genSalt(8);
+      const passwordHash = await bcrypt.hash(password, salt);
+
+      const updateUser = await prisma.user.update({
+        where: {
+          id: id,
+        },
+        data: {
+          name: name,
+          email: email,
+          password: passwordHash,
+          type: type
+        },
+      });
+
+      return res.status(200).send({ success: "Usuário atualizado com sucesso.", updateUser });
+
+    } catch (error) {
+      console.log(error);
+      return res.status(422).send({ error: "Pode ser que este e-mail já esteja em uso." });
+    }
+  }
+
 }
 
 module.exports = new UserController();

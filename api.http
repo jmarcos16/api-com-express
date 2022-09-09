@@ -1,10 +1,10 @@
 ###Create User
-POST http://localhost:3000/user
+POST http://localhost:9001/user
 Content-Type: application/json
 
 {
-  "name": "Danielle Cristina",
-  "email": "dani@teste.com",
+  "name": "Maria Julia",
+  "email": "mjulia@teste.com",
   "password": "malukdete1",
   "type": 2
 }
@@ -12,9 +12,22 @@ Content-Type: application/json
 
 ###Find All
 
-GET http://localhost:3000/users
+GET http://localhost:9001/users
 
 
 ### Find One
 
-GET http://localhost:3000/user/b2c5dccc-d40b-4b03-94f3-3eae3aaca96f
+GET http://localhost:9001/user/b2c5dccc-d40b-4b03-94f3-3eae3aaca96f
+
+
+### Update User
+
+PUT http://localhost:9001/user/c8c45e75-ad3b-4ca2-8a8a-9d080426b0aa
+Content-Type: application/json
+
+{
+  "name": "Maria Julia",
+  "email": "jmarcos@teste.com",
+  "password": "malukdete1",
+  "type": 1
+}
