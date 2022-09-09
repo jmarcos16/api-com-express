@@ -2,7 +2,7 @@
   "name": "api-com-node-express",
   "version": "1.0.0",
   "description": "Testando api com node.js e express",
-  "main": "index.js",
+  "main": "src/index.js",
   "author": "Zé Marcos",
   "scripts": {
     "start": "node src/index.js",
