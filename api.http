@@ -31,3 +31,8 @@ Content-Type: application/json
   "password": "malukdete1",
   "type": 1
 }
+
+
+###Delete User
+
+DELETE http://localhost:9001/user/c8c45e75-ad3b-4ca2-8a8a-9d080426b0aa

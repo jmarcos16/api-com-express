@@ -113,6 +113,29 @@ class UserController {
     }
   }
 
+  async delete(req, res) {
+    const id = req.params.id;
+    const validationUserExist = await prisma.user.findUnique({ where: { id: id } });
+
+    if (!validationUserExist) {
+      return res.status(404).send({ error: "Usuário inexitente." });
+    }
+
+    try {
+      const user = await prisma.user.delete({
+        where: {
+          id: id
+        }
+      });
+      return res.status(200).send({ success: "Usuário deletado com sucesso." });
+    } catch (error) {
+
+      return res.status(500).send({ error: "Houve um erro inesperado, tente novamente." });
+      console.log(error);
+    }
+
+  }
+
 }
 
 module.exports = new UserController();
