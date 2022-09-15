@@ -9,7 +9,7 @@ class UserController {
     const id = req.params.id;
 
     const user = await prisma.user.findUnique({
-      where: { id: id },
+      where: { id: parseInt(id) },
     });
     if (!user) {
       return res.status(404).send({ error: "Usuário não encontrado" });
@@ -73,9 +73,10 @@ class UserController {
       },
     });
 
-    return res.status(201).send({ success: "User registered successfully", user });
+    return res
+      .status(201)
+      .send({ success: "User registered successfully", user });
   }
-
 
   async update(req, res) {
     const id = req.params.id;
@@ -95,27 +96,32 @@ class UserController {
 
       const updateUser = await prisma.user.update({
         where: {
-          id: id,
+          id: parseInt(id),
         },
         data: {
           name: name,
           email: email,
           password: passwordHash,
-          type: type
+          type: type,
         },
       });
 
-      return res.status(200).send({ success: "Usuário atualizado com sucesso.", updateUser });
-
+      return res
+        .status(200)
+        .send({ success: "Usuário atualizado com sucesso.", updateUser });
     } catch (error) {
       console.log(error);
-      return res.status(422).send({ error: "Pode ser que este e-mail já esteja em uso." });
+      return res
+        .status(422)
+        .send({ error: "Pode ser que este e-mail já esteja em uso." });
     }
   }
 
   async delete(req, res) {
     const id = req.params.id;
-    const validationUserExist = await prisma.user.findUnique({ where: { id: id } });
+    const validationUserExist = await prisma.user.findUnique({
+      where: { id: parseInt(id) },
+    });
 
     if (!validationUserExist) {
       return res.status(404).send({ error: "Usuário inexitente." });
@@ -124,18 +130,17 @@ class UserController {
     try {
       const user = await prisma.user.delete({
         where: {
-          id: id
-        }
+          id: parseInt(id),
+        },
       });
       return res.status(200).send({ success: "Usuário deletado com sucesso." });
     } catch (error) {
-
-      return res.status(500).send({ error: "Houve um erro inesperado, tente novamente." });
+      return res
+        .status(500)
+        .send({ error: "Houve um erro inesperado, tente novamente." });
       console.log(error);
     }
-
   }
-
 }
 
 module.exports = new UserController();

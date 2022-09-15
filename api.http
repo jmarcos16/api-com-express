@@ -4,8 +4,9 @@ Content-Type: application/json
 
 {
   "name": "Maria Julia",
-  "email": "mjulia@teste.com",
-  "password": "malukdete1"
+  "email": "mjuslias@teste.com",
+  "password": "malukdete1",
+  "type": 1
 }
 
 
@@ -16,12 +17,12 @@ GET http://localhost:9001/users
 
 ### Find One
 
-GET http://localhost:9001/user/b2c5dccc-d40b-4b03-94f3-3eae3aaca96f
+GET http://localhost:9001/user/
 
 
 ### Update User
 
-PUT http://localhost:9001/user/c8c45e75-ad3b-4ca2-8a8a-9d080426b0aa
+PUT http://localhost:9001/user/
 Content-Type: application/json
 
 {
@@ -34,4 +35,4 @@ Content-Type: application/json
 
 ###Delete User
 
-DELETE http://localhost:9001/user/c8c45e75-ad3b-4ca2-8a8a-9d080426b0aa
+DELETE http://localhost:9001/user/1
