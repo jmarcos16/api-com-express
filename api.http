@@ -1,9 +1,9 @@
 ###Create User
-POST http://localhost:9001/user
+POST http://localhost:3000/user
 Content-Type: application/json
 
 {
-  "name": "Maria Julia",
+  "name": "Antonio",
   "email": "mjuslias@teste.com",
   "password": "malukdete1",
   "type": 1
@@ -12,17 +12,17 @@ Content-Type: application/json
 
 ###Find All
 
-GET http://localhost:9001/users
+GET http://localhost:3000/users
 
 
 ### Find One
 
-GET http://localhost:9001/user/
+GET http://localhost:3000/user/
 
 
 ### Update User
 
-PUT http://localhost:9001/user/
+PUT http://localhost:3000/user/
 Content-Type: application/json
 
 {
@@ -35,4 +35,4 @@ Content-Type: application/json
 
 ###Delete User
 
-DELETE http://localhost:9001/user/1
+DELETE http://localhost:3000/user/1
